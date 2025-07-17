@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'exo': ['Exo 2', 'sans-serif'],
+				'inter': ['Inter', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,7 +65,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				irasco: {
+					midnight: 'hsl(var(--irasco-midnight))',
+					teal: 'hsl(var(--irasco-teal))',
+					violet: 'hsl(var(--irasco-violet))',
+					white: 'hsl(var(--irasco-white))',
+					yellow: 'hsl(var(--irasco-yellow))',
+					graphite: 'hsl(var(--irasco-graphite))'
 				}
+			},
+			backgroundImage: {
+				'gradient-energy': 'var(--gradient-energy)',
+				'gradient-atmosphere': 'var(--gradient-atmosphere)',
+				'gradient-thermal': 'var(--gradient-thermal)',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -88,8 +105,17 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-slow': 'pulse 3s ease-in-out infinite',
+				'rotate-slow': 'rotate 20s linear infinite',
+				'particle-flow': 'particle-flow 8s linear infinite',
+				'crystallize': 'crystallize 2.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+				'energy-pulse': 'energy-pulse 4s ease-in-out infinite',
+			},
+			fontWeight: {
+				'variable': '400 700',
+			},
 		}
 	},
 	plugins: [require("tailwindcss-animate")],

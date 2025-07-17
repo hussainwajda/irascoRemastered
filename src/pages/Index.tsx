@@ -1,12 +1,21 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { EnergyRibbon } from "@/components/EnergyRibbon";
+import { HeroSection } from "@/components/HeroSection";
+import { ProductShowcase } from "@/components/ProductShowcase";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-irasco-midnight text-irasco-white">
+      <EnergyRibbon />
+      <HeroSection />
+      <ProductShowcase />
+      
+      <footer className="py-12 bg-irasco-graphite">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-irasco-white/60 font-inter">
+            IRASCO - Living Atmosphere HVAC Solutions
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };
