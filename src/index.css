@@ -40,8 +40,8 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* IRASCO Atmosphere Variables */
-    /* --irasco-midnight: 100 100% 5%; */
-    --irasco-teal: 165 86% 55%;
+    --irasco-midnight: 215 25% 27%; /* IRASCO Midnight #00131A */
+    --irasco-teal: 165 86% 55%; /* IRASCO Teal #29F0C6 */
     --irasco-violet: 258 100% 69%;
     --irasco-white: 186 100% 96%;
     --irasco-yellow: 45 100% 60%;

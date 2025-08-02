@@ -116,6 +116,15 @@ export const ProductShowcase = () => {
                 transition={{ duration: 0.3 }}
               >
                 
+                {/* Corner Bolts */}
+                {[
+                  'top-2 left-2', 'top-2 right-2', 'bottom-2 left-2', 'bottom-2 right-2'
+                ].map((position, i) => (
+                  <div key={i} className={`absolute ${position} w-3 h-3 bg-irasco-teal/60 rounded-full shadow-inner flex items-center justify-center z-20`}>
+                    <div className="w-1.5 h-1.5 bg-irasco-teal rounded-full"></div>
+                  </div>
+                ))}
+                
                 {/* Condensation Effect */}
                 {hoveredProduct === product.id && (
                   <motion.div
@@ -265,8 +274,16 @@ export const ProductShowcase = () => {
           transition={{ duration: 1, delay: 0.5 }}
           viewport={{ once: true }}
         >
-          <div className="glass p-8 rounded-2xl max-w-4xl mx-auto">
-                            <h3 className="text-2xl font-bold text-irasco-white mb-4">
+          <div className="glass p-8 rounded-2xl max-w-4xl mx-auto relative">
+            {/* Corner Bolts for Integration Note Box */}
+            {[
+              'top-2 left-2', 'top-2 right-2', 'bottom-2 left-2', 'bottom-2 right-2'
+            ].map((position, i) => (
+              <div key={i} className={`absolute ${position} w-3 h-3 bg-irasco-teal/60 rounded-full shadow-inner flex items-center justify-center z-10`}>
+                <div className="w-1.5 h-1.5 bg-irasco-teal rounded-full"></div>
+              </div>
+            ))}
+            <h3 className="text-2xl font-bold text-irasco-white mb-4">
               Integrated Ecosystem
             </h3>
             <p className="text-irasco-white/80 font-inter leading-relaxed">

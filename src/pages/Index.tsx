@@ -1,19 +1,21 @@
-import { HeroSection } from "@/components/HeroSection";
-import { ProductShowcase } from "@/components/ProductShowcase";
+import AboutSection from "@/components/About";
+import HeroSection from "@/components/HeroSection2";
+import ServicesSection from "@/components/Services";
+import ContactSection from "@/components/Contact";
+import Footer from "@/components/Footer";
+import TestimonialSection from "@/components/TestimonialSection";
+// import { ProductShowcase } from "@/components/ProductShowcase";
 
 const Index = () => {
   return (
     <>
       <HeroSection />
-      <ProductShowcase />
-      
-      <footer className="py-12 bg-irasco-graphite">
-        <div className="container mx-auto px-6 text-center">
-          <p className="text-irasco-white/60 font-inter">
-            IRASCO - Living Atmosphere HVAC Solutions
-          </p>
-        </div>
-      </footer>
+      <AboutSection />
+      <ServicesSection />
+      <TestimonialSection />
+      <ContactSection />
+      <Footer />
+      {/* <ProductShowcase /> */}
     </>
   );
 };
