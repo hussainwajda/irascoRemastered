@@ -1,11 +1,9 @@
-import { EnergyRibbon } from "@/components/EnergyRibbon";
 import { HeroSection } from "@/components/HeroSection";
 import { ProductShowcase } from "@/components/ProductShowcase";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-irasco-midnight text-irasco-white">
-      <EnergyRibbon />
+    <>
       <HeroSection />
       <ProductShowcase />
       
@@ -16,7 +14,7 @@ const Index = () => {
           </p>
         </div>
       </footer>
-    </div>
+    </>
   );
 };
 

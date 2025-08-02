@@ -54,7 +54,7 @@ export const EnergyRibbon = () => {
             <IrascoLogo size="small" />
             {!isScrolled && (
               <motion.div 
-                className="text-irasco-white font-exo font-bold text-xl"
+                className="text-irasco-white font-bold text-xl"
                 exit={{ opacity: 0, x: -20 }}
               >
                 IRASCO

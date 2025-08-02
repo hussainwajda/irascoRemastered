@@ -40,7 +40,7 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* IRASCO Atmosphere Variables */
-    --irasco-midnight: 195 100% 5%;
+    /* --irasco-midnight: 100 100% 5%; */
     --irasco-teal: 165 86% 55%;
     --irasco-violet: 258 100% 69%;
     --irasco-white: 186 100% 96%;
@@ -98,62 +98,6 @@ All colors MUST be HSL.
     @apply bg-background text-foreground overflow-x-hidden;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   }
-
-  /* Glass Morphism Utilities */
-  .glass {
-    background: var(--glass-bg);
-    backdrop-filter: blur(12px) saturate(180%);
-    border: 1px solid var(--glass-border);
-    box-shadow: var(--glass-shadow);
-  }
-
-  .glass-strong {
-    background: hsla(210, 51%, 8%, 0.6);
-    backdrop-filter: blur(20px) saturate(200%);
-    border: 1px solid hsla(165, 86%, 55%, 0.3);
-  }
-
-  /* Neon Effects */
-  .neon-glow {
-    text-shadow: var(--neon-text-shadow);
-    filter: drop-shadow(0 0 10px hsl(var(--irasco-teal)));
-  }
-
-  .neon-border {
-    border: 1px solid hsl(var(--irasco-teal));
-    box-shadow: var(--neon-glow);
-  }
-
-  /* Animation Classes */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-
-  .animate-pulse-slow {
-    animation: pulse 3s ease-in-out infinite;
-  }
-
-  .animate-rotate-slow {
-    animation: rotate 20s linear infinite;
-  }
-
-  /* Energy Particle Effects */
-  .particle-trail {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .particle-trail::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 50% 50%, hsl(var(--irasco-teal) / 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: particle-flow 8s linear infinite;
-  }
 }
 
 @keyframes float {
@@ -170,17 +114,4 @@ All colors MUST be HSL.
 @keyframes particle-flow {
   0% { transform: translateX(-100px) translateY(-100px); }
   100% { transform: translateX(100px) translateY(100px); }
-}
-
-/* Reduced Motion Support */
-@media (prefers-reduced-motion: reduce) {
-  .animate-float,
-  .animate-pulse-slow,
-  .animate-rotate-slow {
-    animation: none;
-  }
-  
-  .particle-trail::before {
-    animation: none;
-  }
 }

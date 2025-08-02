@@ -81,7 +81,7 @@ export const ProductShowcase = () => {
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <h2 className="font-exo text-5xl font-bold text-irasco-white mb-6">
+          <h2 className="text-5xl font-bold text-irasco-white mb-6">
             System <span className="text-transparent bg-gradient-energy bg-clip-text">Modules</span>
           </h2>
           <p className="text-xl text-irasco-white/80 font-inter max-w-3xl mx-auto">
@@ -186,7 +186,7 @@ export const ProductShowcase = () => {
                 {/* Product Info */}
                 <div className="space-y-4">
                   <div>
-                    <h3 className="font-exo text-xl font-bold text-irasco-white mb-2">
+                    <h3 className="text-xl font-bold text-irasco-white mb-2">
                       {product.title}
                     </h3>
                     <p className="text-irasco-white/70 font-inter text-sm leading-relaxed">
@@ -266,7 +266,7 @@ export const ProductShowcase = () => {
           viewport={{ once: true }}
         >
           <div className="glass p-8 rounded-2xl max-w-4xl mx-auto">
-            <h3 className="font-exo text-2xl font-bold text-irasco-white mb-4">
+                            <h3 className="text-2xl font-bold text-irasco-white mb-4">
               Integrated Ecosystem
             </h3>
             <p className="text-irasco-white/80 font-inter leading-relaxed">

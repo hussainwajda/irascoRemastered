@@ -19,7 +19,6 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'exo': ['Exo 2', 'sans-serif'],
 				'inter': ['Inter', 'sans-serif'],
 			},
 			colors: {
