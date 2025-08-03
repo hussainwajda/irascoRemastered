@@ -1,5 +1,7 @@
 'use client';
 
+import ShinyText from "@/assets/ShineText";
+
 export default function ServicesSection() {
   const services = [
     {
@@ -49,7 +51,9 @@ export default function ServicesSection() {
                 ))}
               </div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800">Our Services</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-800">
+              <ShinyText text="Our Services" className="text-slate-800" />
+            </h2>
             <div className="w-16 h-4 bg-gradient-to-l from-gray-500 to-gray-600 rounded-r-lg ml-4 shadow-lg">
               <div className="flex justify-center items-center h-full space-x-1">
                 {Array.from({ length: 4 }).map((_, i) => (

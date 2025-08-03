@@ -100,7 +100,11 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+				shine: {
+					'0%': { 'background-position': '100%' },
+					'100%': { 'background-position': '-100%' },
+					},
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -111,6 +115,7 @@ export default {
 				'particle-flow': 'particle-flow 8s linear infinite',
 				'crystallize': 'crystallize 2.2s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
 				'energy-pulse': 'energy-pulse 4s ease-in-out infinite',
+				shine: 'shine 2s linear infinite',
 			},
 			fontWeight: {
 				'variable': '400 700',

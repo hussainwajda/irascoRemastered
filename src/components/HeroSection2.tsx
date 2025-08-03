@@ -1,4 +1,6 @@
+import { ArrowRight, Phone } from "lucide-react";
 import { Navbar } from "./Navbar";
+import ShinyText from "@/assets/ShineText";
 
 export default function HeroSection() {
   return (
@@ -14,26 +16,7 @@ export default function HeroSection() {
         }}
       >
         <div className="absolute inset-0 bg-slate-900/70"></div>
-      </div>
-
-      {/* Floating Duct Elements */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-8 bg-gradient-to-r from-gray-400 to-gray-600 rounded-lg shadow-lg opacity-30 animate-pulse">
-          <div className="flex justify-between items-center h-full px-2">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="w-1 h-4 bg-gray-800 rounded-full"></div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute top-40 right-20 w-8 h-32 bg-gradient-to-b from-gray-500 to-gray-700 rounded-lg shadow-lg opacity-25 animate-pulse" style={{ animationDelay: '1s' }}>
-          <div className="flex flex-col justify-between items-center h-full py-2">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="w-4 h-1 bg-gray-800 rounded-full"></div>
-            ))}
-          </div>
-        </div>
-        <div className="absolute bottom-32 left-1/4 w-24 h-6 bg-gradient-to-r from-gray-600 to-gray-800 rounded-lg shadow-lg opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
-      </div> */}
+      </div>  
 
       {/* Content */}
       <div className="relative z-10 text-center mt-20 px-6 max-w-5xl">
@@ -47,14 +30,10 @@ export default function HeroSection() {
           </div>
         </div> */}
 
-        <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
-          <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
-            IRASCO
-          </span>
+        <h1 className="text-4xl md:text-6xl font-bold text-white mt-10 mb-6 leading-tight">
+          <ShinyText text="IRASCO" className="text-white" />
           <br />
-          <span className="text-3xl md:text-4xl font-normal text-gray-300">
-            Advanced HVAC Solutions
-          </span>
+          <ShinyText text="Advanced HVAC Solutions" className="text-3xl md:text-4xl font-normal text-gray-300" />
         </h1>
 
         <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto">
@@ -68,14 +47,14 @@ export default function HeroSection() {
           <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 whitespace-nowrap">
             <span className="relative z-10 flex items-center">
               Explore Solutions
-              <i className="ri-arrow-right-line ml-2 group-hover:translate-x-1 transition-transform duration-200"></i>
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
             </span>
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </button>
           
           <button className="group relative px-8 py-4 border-2 border-gray-400 text-white font-semibold rounded-lg hover:bg-gray-800/50 transition-all duration-300 whitespace-nowrap">
             <span className="flex items-center">
-              <i className="ri-phone-line mr-2 w-5 h-5 flex items-center justify-center"></i>
+              <Phone className="w-5 h-5 mr-2" />
               Contact Us
             </span>
           </button>

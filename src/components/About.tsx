@@ -1,6 +1,7 @@
 'use client';
 
 import { ArrowRight, Headset, Leaf, Settings, Wrench } from "lucide-react";
+import ShinyText from "@/assets/ShineText";
 
 export default function AboutSection() {
   return (
@@ -50,7 +51,9 @@ export default function AboutSection() {
                     ))}
                   </div>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold text-white">About IRASCO</h2>
+                <h2 className="text-4xl md:text-5xl font-bold text-white">
+                  <ShinyText text="About IRASCO" className="text-white" />
+                </h2>
               </div>
               
               <p className="text-xl text-gray-300 leading-relaxed mb-6">

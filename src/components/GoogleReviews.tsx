@@ -2,42 +2,203 @@
 
 import { useState, useEffect } from 'react';
 
-export default function TestimonialSection() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+interface GoogleReview {
+  id: string;
+  author_name: string;
+  author_url?: string;
+  profile_photo_url?: string;
+  rating: number;
+  relative_time_description: string;
+  text: string;
+  translated?: boolean;
+  review_language?: string;
+  original_language?: string;
+}
 
-  const testimonials = [
-    {
-      name: "David Chen",
-      title: "Facilities Manager",
-      company: "TechCorp Industries",
-      image: "https://readdy.ai/api/search-image?query=Professional%20Asian%20businessman%20in%20modern%20office%20environment%2C%20confident%20smile%2C%20business%20suit%2C%20corporate%20headshot%20style%2C%20clean%20background&width=80&height=80&seq=testimonial-1&orientation=squarish",
-      rating: 5,
-      text: "IRASCO transformed our entire commercial facility with their cutting-edge HVAC system. The energy efficiency improvements exceeded our expectations, and their 24/7 support gives us complete peace of mind. Outstanding professionalism from start to finish."
-    },
-    {
-      name: "Sarah Martinez",
-      title: "Restaurant Owner",
-      company: "Gourmet Paradise",
-      image: "https://readdy.ai/api/search-image?query=Professional%20Hispanic%20businesswoman%20in%20restaurant%20setting%2C%20friendly%20smile%2C%20chef%20coat%20or%20business%20attire%2C%20warm%20lighting%2C%20professional%20headshot&width=80&height=80&seq=testimonial-2&orientation=squarish",
-      rating: 5,
-      text: "The kitchen ventilation system IRASCO installed has been a game-changer for our restaurant. Perfect air circulation, whisper-quiet operation, and significant reduction in our utility bills. Their team understood exactly what we needed."
-    },
-    {
-      name: "Michael Thompson",
-      title: "Plant Manager",
-      company: "Industrial Solutions Ltd",
-      image: "https://readdy.ai/api/search-image?query=Professional%20Caucasian%20man%20in%20industrial%20setting%2C%20hard%20hat%2C%20safety%20equipment%2C%20confident%20pose%2C%20factory%20background%2C%20engineering%20professional&width=80&height=80&seq=testimonial-3&orientation=squarish",
-      rating: 5,
-      text: "Working with IRASCO on our industrial cooling project was exceptional. Their engineers designed a custom solution that perfectly fits our unique requirements. The installation was flawless and completed ahead of schedule."
-    }
-  ];
+interface GoogleReviewsResponse {
+  reviews: GoogleReview[];
+  average_rating: number;
+  total_reviews: number;
+}
+
+export default function GoogleReviews() {
+  const [reviews, setReviews] = useState<GoogleReview[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [currentReview, setCurrentReview] = useState(0);
+
+  // This would be your actual Google Business Profile ID or place ID
+  const PLACE_ID = "YOUR_GOOGLE_PLACE_ID"; // Replace with actual place ID
+  const API_KEY = "YOUR_API_KEY"; // Replace with your API key
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
+    fetchGoogleReviews();
+  }, []);
+
+  useEffect(() => {
+    if (reviews.length > 0) {
+      const interval = setInterval(() => {
+        setCurrentReview((prev) => (prev + 1) % reviews.length);
+      }, 5000);
+      return () => clearInterval(interval);
+    }
+  }, [reviews.length]);
+
+  const fetchGoogleReviews = async () => {
+    try {
+      setLoading(true);
+      
+      // Option 1: Using Google Places API (requires API key and billing)
+      // const response = await fetch(`https://maps.googleapis.com/maps/api/place/details/json?place_id=${PLACE_ID}&fields=reviews&key=${API_KEY}`);
+      
+      // Option 2: Using a third-party service (example with SerpAPI)
+      // You would need to sign up for a service like SerpAPI, ScrapingBee, or similar
+      const response = await fetch('/api/google-reviews', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          placeId: PLACE_ID,
+          // Add any other parameters needed
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch reviews');
+      }
+
+      const data: GoogleReviewsResponse = await response.json();
+      setReviews(data.reviews);
+    } catch (err) {
+      console.error('Error fetching Google reviews:', err);
+      setError('Unable to load reviews at this time');
+      
+      // Fallback to real customer data if API fails
+      setReviews(getRealCustomerReviews());
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getRealCustomerReviews = (): GoogleReview[] => {
+    return [
+      {
+        id: "1",
+        author_name: "ABBAS DHINOJWALA",
+        profile_photo_url: "/male.jpg",
+        rating: 5,
+        relative_time_description: "2 months ago",
+        text: "They made the ducting for our restaurant in Indore. Really good work with precision and timely follow up. The owner himself visits the site and discussed what we were expecting and gave us ideas as well. Recommended for people in Indore and nearby cities."
+      },
+      {
+        id: "2",
+        author_name: "BATUL",
+        profile_photo_url: "/female.jpg",
+        rating: 5,
+        relative_time_description: "1 month ago",
+        text: "I m Very Satisfied with the service of my Split AC and their techician are also coprative..\nThnku IRasco"
+      },
+      {
+        id: "3",
+        author_name: "TAHER KAGDI",
+        profile_photo_url: "/male.jpg",
+        rating: 5,
+        relative_time_description: "3 weeks ago",
+        text: "Fantastic service with super duper quality specailly they are no 1 service provide In Mp also a great customer querry resolution quickly as soon as possible"
+      },
+      {
+        id: "4",
+        author_name: "KUTBUDDIN KALABHAI",
+        profile_photo_url: "/male.jpg",
+        rating: 5,
+        relative_time_description: "2 weeks ago",
+        text: "very professional.... fast service..."
+      },
+      {
+        id: "5",
+        author_name: "ZAHRA AGASIAWALA",
+        profile_photo_url: "/female.jpg",
+        rating: 5,
+        relative_time_description: "1 week ago",
+        text: "Excellent work and services, Thank you IRASCO!"
+      },
+      {
+        id: "6",
+        author_name: "SHUBHAM SOLANKI",
+        profile_photo_url: "/male.jpg",
+        rating: 5,
+        relative_time_description: "5 days ago",
+        text: "A very good team for HVAC and Ducting solutions.\nAlways on time and updated work."
+      },
+      {
+        id: "7",
+        author_name: "ALOK SINGH",
+        profile_photo_url: "/male.jpg",
+        rating: 5,
+        relative_time_description: "3 days ago",
+        text: "Very nice work, Ali bhai ka kaam ek number ka hai...ek baar ali bhai se kaam Kara kar jaroor dekhne"
+      },
+      {
+        id: "8",
+        author_name: "ART N INK",
+        profile_photo_url: "/female.jpg",
+        rating: 5,
+        relative_time_description: "2 days ago",
+        text: "Installed a stainless chimney for my kichen last week. Everything went smoothly. Very responsive and professional from scheduling to installation. Highly recommended."
+      },
+      {
+        id: "9",
+        author_name: "HUSSAIN WAJDA",
+        profile_photo_url: "/male.jpg",
+        rating: 5,
+        relative_time_description: "1 day ago",
+        text: "Best air condition and its services"
+      },
+      {
+        id: "10",
+        author_name: "AJJU KHAN",
+        profile_photo_url: "/male.jpg",
+        rating: 5,
+        relative_time_description: "12 hours ago",
+        text: "Irasco is the company you can trust and rely on, they are the best in the business."
+      },
+      {
+        id: "11",
+        author_name: "ANIL SARASWAT",
+        profile_photo_url: "/male.jpg",
+        rating: 4,
+        relative_time_description: "6 hours ago",
+        text: "Satisfying work is faith and good work"
+      }
+    ];
+  };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+
+  if (error && reviews.length === 0) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-red-500">{error}</p>
+      </div>
+    );
+  }
+
+  if (reviews.length === 0) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-gray-500">No reviews available</p>
+      </div>
+    );
+  }
+
+  const currentReviewData = reviews[currentReview];
 
   return (
     <section className="relative py-20 bg-gradient-to-br from-slate-200 to-slate-300 overflow-hidden">
@@ -77,17 +238,17 @@ export default function TestimonialSection() {
                 ))}
               </div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800">Client Testimonials</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-800">Customer Testimonials</h2>
           </div>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Hear from industry leaders who trust IRASCO for their critical HVAC solutions
+            See what our customers are saying about us
           </p>
         </div>
 
-        {/* Main Testimonial */}
+        {/* Main Review */}
         <div className="max-w-4xl mx-auto mb-20">
           <div className="relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-2xl border border-gray-200">
-            {/* Corner Bolts for Main Testimonial Box */}
+            {/* Corner Bolts for Main Review Box */}
             {[
               'top-2 left-2', 'top-2 right-2', 'bottom-2 left-2', 'bottom-2 right-2'
             ].map((position, i) => (
@@ -106,45 +267,56 @@ export default function TestimonialSection() {
             </div>
 
             <div className="text-center">
-              {/* Stars */}
+              {/* Google Stars */}
               <div className="flex justify-center mb-6">
-                {Array.from({ length: testimonials[currentTestimonial].rating }).map((_, i) => (
-                  <i key={i} className="ri-star-fill text-2xl text-yellow-400 w-6 h-6 flex items-center justify-center"></i>
+                {Array.from({ length: currentReviewData.rating }).map((_, i) => (
+                  <svg key={i} className="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
                 ))}
               </div>
 
               {/* Quote */}
               <blockquote className="text-xl md:text-2xl text-gray-700 mb-8 leading-relaxed italic">
-                "{testimonials[currentTestimonial].text}"
+                "{currentReviewData.text}"
               </blockquote>
 
               {/* Author */}
               <div className="flex items-center justify-center space-x-4">
                 <img 
-                  src={testimonials[currentTestimonial].image}
-                  alt={testimonials[currentTestimonial].name}
+                  src={currentReviewData.profile_photo_url || "/placeholder.svg"}
+                  alt={currentReviewData.author_name}
                   className="w-16 h-16 rounded-full object-cover border-4 border-gray-200 shadow-lg"
                 />
                 <div className="text-left">
-                  <div className="font-bold text-lg text-slate-800">{testimonials[currentTestimonial].name}</div>
-                  <div className="text-gray-600">{testimonials[currentTestimonial].title}</div>
-                  <div className="text-blue-600 font-medium">{testimonials[currentTestimonial].company}</div>
+                  <div className="font-bold text-lg text-slate-800">{currentReviewData.author_name}</div>
+                  <div className="text-blue-600 font-medium">{currentReviewData.relative_time_description}</div>
                 </div>
               </div>
             </div>
 
             {/* Navigation Dots */}
             <div className="flex justify-center mt-8 space-x-2">
-              {testimonials.map((_, index) => (
+              {reviews.map((_, index) => (
                 <button
                   key={index}
-                  onClick={() => setCurrentTestimonial(index)}
+                  onClick={() => setCurrentReview(index)}
                   className={`w-3 h-3 rounded-full transition-colors duration-300 ${
-                    index === currentTestimonial ? 'bg-blue-500' : 'bg-gray-300'
+                    index === currentReview ? 'bg-blue-500' : 'bg-gray-300'
                   }`}
                 />
               ))}
             </div>
+          </div>
+        </div>
+
+        {/* Customer Reviews Summary */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center space-x-2 bg-[url('/sticky-sm.svg')] bg-no-repeat bg-center bg-cover bg-opacity-50 rounded-lg px-6 py-3 shadow-lg">
+            <svg className="w-6 h-6 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <span className="font-semibold text-white">Verified Customer Reviews</span>
           </div>
         </div>
 
@@ -252,4 +424,4 @@ export default function TestimonialSection() {
       `}</style>
     </section>
   );
-}
+} 

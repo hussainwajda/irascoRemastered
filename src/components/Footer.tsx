@@ -124,22 +124,21 @@ export default function Footer() {
                   <i className="ri-map-pin-line text-blue-400 mt-1 w-5 h-5 flex items-center justify-center"></i>
                   <div className="text-gray-400">
                     <div className="font-medium text-white">Address</div>
-                    <div>1234 Industrial Avenue</div>
-                    <div>Tech City, TC 12345</div>
+                    <div>Sajjan mill, 457001, Ratlam, Madhya Pradesh</div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <i className="ri-phone-line text-green-400 mt-1 w-5 h-5 flex items-center justify-center"></i>
                   <div className="text-gray-400">
                     <div className="font-medium text-white">Phone</div>
-                    <div>(555) 123-HVAC</div>
+                    <div>+91 9630859889</div>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <i className="ri-mail-line text-purple-400 mt-1 w-5 h-5 flex items-center justify-center"></i>
                   <div className="text-gray-400">
                     <div className="font-medium text-white">Email</div>
-                    <div>info@irasco.com</div>
+                    <div>irascoindia@gmail.com</div>
                   </div>
                 </div>
               </div>
@@ -150,7 +149,7 @@ export default function Footer() {
           <div className="border-t border-gray-700 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="text-gray-400 text-sm">
-                © 2024 IRASCO. All rights reserved. | Designed for the future of HVAC.
+                © 2025 IRASCO. All rights reserved.
               </div>
               <div className="flex items-center space-x-4">
                 <div className="flex items-center space-x-2 text-gray-400 text-sm">

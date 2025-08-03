@@ -1,5 +1,3 @@
-"use client"
-
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { IrascoLogo } from "./IrascoLogo"
@@ -23,7 +21,7 @@ export const Navbar = () => {
     { name: "Home", href: "#home" },
     { name: "About", href: "#about" },
     { name: "Services", href: "#services" },
-    { name: "Clients", href: "#clients" },
+    { name: "Testimonials", href: "#testimonials" },
   ]
 
   return (

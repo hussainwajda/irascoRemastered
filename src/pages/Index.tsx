@@ -2,8 +2,9 @@ import AboutSection from "@/components/About";
 import HeroSection from "@/components/HeroSection2";
 import ServicesSection from "@/components/Services";
 import ContactSection from "@/components/Contact";
+import MapSection from "@/components/Map";
 import Footer from "@/components/Footer";
-import TestimonialSection from "@/components/TestimonialSection";
+import GoogleReviews from "@/components/GoogleReviews";
 // import { ProductShowcase } from "@/components/ProductShowcase";
 
 const Index = () => {
@@ -12,8 +13,9 @@ const Index = () => {
       <HeroSection />
       <AboutSection />
       <ServicesSection />
-      <TestimonialSection />
+      <GoogleReviews />
       <ContactSection />
+      <MapSection />
       <Footer />
       {/* <ProductShowcase /> */}
     </>

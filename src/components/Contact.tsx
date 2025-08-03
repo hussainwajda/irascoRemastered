@@ -1,7 +1,9 @@
 'use client';
 
-import { Send } from 'lucide-react';
+import React from 'react';
+import { ChevronDown, Clock, Mail, MapPin, Phone, Send } from 'lucide-react';
 import { useState } from 'react';
+import ShinyText from '@/assets/ShineText';
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -61,7 +63,9 @@ export default function ContactSection() {
                 ))}
               </div>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800">Get In Touch</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-800">
+              <ShinyText text="Get In Touch" className="text-slate-800" />
+            </h2>
             <div className="w-20 h-6 bg-gradient-to-l from-gray-500 to-gray-600 rounded-r-lg ml-4 shadow-lg">
               <div className="flex justify-between items-center h-full px-2">
                 {Array.from({ length: 5 }).map((_, i) => (
@@ -130,7 +134,7 @@ export default function ContactSection() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors text-sm"
-                      placeholder="(555) 123-4567"
+                      placeholder="+91 XXXXXXXXXX"
                     />
                   </div>
                   <div>
@@ -140,7 +144,7 @@ export default function ContactSection() {
                         name="service"
                         value={formData.service}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 pr-8 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors appearance-none text-sm bg-white cursor-pointer"
+                        className="w-full px-4 py-3 pr-8 border-2 border-gray-200 text-black rounded-lg focus:border-blue-500 focus:outline-none transition-colors appearance-none text-sm bg-white cursor-pointer"
                       >
                         <option value="">Select a service</option>
                         <option value="commercial-ac">Commercial Air Conditioning</option>
@@ -151,7 +155,7 @@ export default function ContactSection() {
                         <option value="consultation">Free Consultation</option>
                       </select>
                       <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                        <i className="ri-arrow-down-s-line text-gray-400"></i>
+                        <ChevronDown className="w-5 h-5 text-black" />
                       </div>
                     </div>
                   </div>
@@ -165,7 +169,7 @@ export default function ContactSection() {
                     onChange={handleChange}
                     rows={5}
                     maxLength={500}
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none text-sm"
+                    className="w-full px-4 py-3 border-2 border-gray-200 text-black rounded-lg focus:border-blue-500 focus:outline-none transition-colors resize-none text-sm"
                     placeholder="Tell us about your project requirements..."
                   ></textarea>
                   <div className="text-right text-xs text-gray-500 mt-1">
@@ -229,42 +233,42 @@ export default function ContactSection() {
 
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
-                      <i className="ri-map-pin-line text-white text-xl w-6 h-6 flex items-center justify-center"></i>
+                    <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-400 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
+                      <MapPin className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Office Location</h4>
-                      <p className="text-gray-300">1234 Industrial Avenue<br />Tech City, TC 12345</p>
+                      <p className="text-gray-300">Sajjan mill, 457001, Ratlam, Madhya Pradesh</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-green-500 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
-                      <i className="ri-phone-line text-white text-xl w-6 h-6 flex items-center justify-center"></i>
+                    <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-400 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
+                      <Phone className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Phone Numbers</h4>
-                      <p className="text-gray-300">Main: (555) 123-HVAC<br />Emergency: (555) 911-COOL</p>
+                      <p className="text-gray-300">Main: +91 9630859889</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-purple-500 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
-                      <i className="ri-mail-line text-white text-xl w-6 h-6 flex items-center justify-center"></i>
+                    <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-400 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
+                      <Mail className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Email Address</h4>
-                      <p className="text-gray-300">info@irasco.com<br />support@irasco.com</p>
+                      <p className="text-gray-300">irascoindia@gmail.com</p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
-                      <i className="ri-time-line text-white text-xl w-6 h-6 flex items-center justify-center"></i>
+                    <div className="w-12 h-12 bg-gradient-to-r from-gray-500 to-gray-400 rounded-lg flex items-center justify-center shadow-lg flex-shrink-0">
+                      <Clock className="w-6 h-6 text-white" />
                     </div>
                     <div>
                       <h4 className="font-semibold mb-1">Business Hours</h4>
-                      <p className="text-gray-300">Mon-Fri: 8:00 AM - 6:00 PM<br />Saturday: 9:00 AM - 4:00 PM<br />Sunday: Emergency Only</p>
+                      <p className="text-gray-300">Mon-Sat: 10:00 AM - 7:00 PM<br />Sunday: Emergency Only</p>
                     </div>
                   </div>
                 </div>
