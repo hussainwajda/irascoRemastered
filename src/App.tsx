@@ -11,6 +11,7 @@ import CommercialACPage from "./pages/services/commercial-air-conditioning/page"
 import CommercialCoolersPage from "./pages/services/commercial-air-coolers/page";
 import DuctworkPage from "./pages/services/ductwork-ventilation/page";
 import KitchenChimneyPage from "./pages/services/kitchen-chimney-systems/page";
+import { ScrollToTop } from "./components/scrollToTop";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -19,6 +20,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Layout>
           <Routes>
             <Route path="/" element={<Index />} />
