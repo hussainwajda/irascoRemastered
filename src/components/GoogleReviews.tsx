@@ -201,7 +201,7 @@ export default function GoogleReviews() {
   const currentReviewData = reviews[currentReview];
 
   return (
-    <section className="relative py-20 bg-gradient-to-br from-slate-200 to-slate-300 overflow-hidden">
+    <section id='testimonials' className="relative py-20 bg-gradient-to-br from-slate-200 to-slate-300 overflow-hidden">
       {/* Background Duct Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-10 left-20 w-32 h-4 bg-gradient-to-r from-gray-500 to-gray-600 rounded transform rotate-12">

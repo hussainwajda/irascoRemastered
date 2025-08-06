@@ -1,8 +1,52 @@
 import { ArrowRight, Phone } from "lucide-react";
 import { Navbar } from "./Navbar";
-import ShinyText from "@/assets/ShineText";
+import BlurText from "@/assets/BlurText";
+import { useState, useEffect } from "react";
 
 export default function HeroSection() {
+  const [loaderComplete, setLoaderComplete] = useState(false);
+  const [animationStarted, setAnimationStarted] = useState(false);
+
+  // Check if loader is enabled and handle completion
+  useEffect(() => {
+    // Check if loader is present in the DOM
+    const checkLoader = () => {
+      const loaderElement = document.querySelector('[data-loader="true"]');
+      if (!loaderElement) {
+        // No loader found, start animation immediately
+        setLoaderComplete(true);
+        setAnimationStarted(true);
+      }
+    };
+
+    // Check immediately
+    checkLoader();
+    
+    // Also check after a short delay in case loader is added dynamically
+    const timeoutId = setTimeout(checkLoader, 100);
+    
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  // Listen for loader completion
+  useEffect(() => {
+    const handleLoaderComplete = () => {
+      setLoaderComplete(true);
+      setAnimationStarted(true);
+    };
+
+    // Listen for custom event from loader
+    window.addEventListener('loader-complete', handleLoaderComplete);
+    
+    return () => {
+      window.removeEventListener('loader-complete', handleLoaderComplete);
+    };
+  }, []);
+
+  const handleAnimationComplete = () => {
+    console.log('IRASCO animation completed!');
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
       {/* Background Image */}
@@ -31,9 +75,45 @@ export default function HeroSection() {
         </div> */}
 
         <h1 className="text-4xl md:text-6xl font-bold text-white mt-10 mb-6 leading-tight">
-          <ShinyText text="IRASCO" className="text-white" />
-          <br />
-          <ShinyText text="Advanced HVAC Solutions" className="text-3xl md:text-4xl font-normal text-gray-300" />
+          {animationStarted ? (
+            <>
+              <BlurText
+                text="IRASCO"
+                delay={100}
+                animateBy="letters"
+                direction="top"
+                onAnimationComplete={handleAnimationComplete}
+                className="text-4xl md:text-6xl font-bold text-blue-400"
+                animationFrom={{ filter: "blur(6px)", opacity: 0.4, y: -20, scale: 0.9 }}
+                animationTo={[
+                  { filter: "blur(3px)", opacity: 0.7, y: -5, scale: 0.95 },
+                  { filter: "blur(1px)", opacity: 0.9, y: -1, scale: 0.98 },
+                  { filter: "blur(0px)", opacity: 1, y: 0, scale: 1 }
+                ]}
+                stepDuration={0.6}
+              />
+              <br />
+              <BlurText
+                text="Advanced HVAC Solutions"
+                delay={200}
+                animateBy="words"
+                direction="bottom"
+                className="text-3xl md:text-4xl font-normal text-gray-300"
+                animationFrom={{ filter: "blur(5px)", opacity: 0.4, y: 15 }}
+                animationTo={[
+                  { filter: "blur(2px)", opacity: 0.7, y: 5 },
+                  { filter: "blur(0px)", opacity: 1, y: 0 }
+                ]}
+                stepDuration={0.5}
+              />
+            </>
+          ) : (
+            <>
+              <span className="text-4xl md:text-6xl font-bold text-blue-400 opacity-0">IRASCO</span>
+              <br />
+              <span className="text-3xl md:text-4xl font-normal text-gray-300 opacity-0">Advanced HVAC Solutions</span>
+            </>
+          )}
         </h1>
 
         <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto">
@@ -63,8 +143,8 @@ export default function HeroSection() {
         {/* Stats */}
         <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {[
-            { number: '100+', label: 'Projects Completed', icon: 'ri-building-line' },
-            { number: '5+', label: 'Years Experience', icon: 'ri-time-line' },
+            { number: '200+', label: 'Projects Completed', icon: 'ri-building-line' },
+            { number: '10+', label: 'Years Experience', icon: 'ri-time-line' },
             { number: '24/7', label: 'Support Available', icon: 'ri-customer-service-line' }
           ].map((stat, index) => (
             <div key={index} className="relative group">

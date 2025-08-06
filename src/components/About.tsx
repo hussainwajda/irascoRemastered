@@ -2,6 +2,7 @@
 
 import { ArrowRight, Headset, Leaf, Settings, Wrench } from "lucide-react";
 import ShinyText from "@/assets/ShineText";
+import BlurText from "@/assets/BlurText";
 
 export default function AboutSection() {
   return (
@@ -52,7 +53,13 @@ export default function AboutSection() {
                   </div>
                 </div>
                 <h2 className="text-4xl md:text-5xl font-bold text-white">
-                  <ShinyText text="About IRASCO" className="text-white" />
+                  <BlurText
+                    text="About IRASCO"
+                    delay={300}
+                    animateBy="words"
+                    direction="top"
+                    className="text-4xl md:text-5xl font-bold text-white"
+                  />
                 </h2>
               </div>
               
@@ -141,7 +148,7 @@ export default function AboutSection() {
             {/* Floating Stats */}
             <div className="absolute -bottom-8 -left-8 bg-gradient-to-br from-white to-gray-100 rounded-xl p-6 shadow-2xl">
               <div className="text-center">
-                <div className="text-3xl font-bold text-slate-800 mb-1">100+</div>
+                <div className="text-3xl font-bold text-slate-800 mb-1">200+</div>
                 <div className="text-sm text-gray-600">Projects Delivered</div>
               </div>
               {/* Mini Vent */}
@@ -155,7 +162,7 @@ export default function AboutSection() {
 
             <div className="absolute -top-8 -right-8 bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-6 shadow-2xl">
               <div className="text-center">
-                <div className="text-3xl font-bold mb-1">5+</div>
+                <div className="text-3xl font-bold mb-1">10+</div>
                 <div className="text-sm opacity-90">Years Experience</div>
               </div>
               {/* Mini Vent */}

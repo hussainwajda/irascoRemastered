@@ -1,3 +1,4 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.5.0/remixicon.min.css');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -114,4 +115,129 @@ All colors MUST be HSL.
 @keyframes particle-flow {
   0% { transform: translateX(-100px) translateY(-100px); }
   100% { transform: translateX(100px) translateY(100px); }
+}
+
+/* Loader Animations */
+@keyframes fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes scale-in {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-12deg); }
+  100% { transform: translateX(200%) skewX(-12deg); }
+}
+
+@keyframes slide-in-up {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slide-in-up-delay {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  50% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slide-in-up-delay-2 {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  70% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slide-in-up-delay-3 {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  90% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slide-in-up-delay-4 {
+  0% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  100% { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@layer utilities {
+  .animate-fade-out {
+    animation: fade-out 0.4s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scale-in 0.3s ease-out forwards;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  .animate-slide-in-up {
+    animation: slide-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-slide-in-up-delay {
+    animation: slide-in-up-delay 1.2s ease-out forwards;
+  }
+
+  .animate-slide-in-up-delay-2 {
+    animation: slide-in-up-delay-2 1.6s ease-out forwards;
+  }
+
+  .animate-slide-in-up-delay-3 {
+    animation: slide-in-up-delay-3 2s ease-out forwards;
+  }
+
+  .animate-slide-in-up-delay-4 {
+    animation: slide-in-up-delay-4 2.4s ease-out forwards;
+  }
 }
