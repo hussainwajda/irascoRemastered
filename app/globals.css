@@ -1,0 +1,260 @@
+@import "tailwindcss";
+
+/* --------------------------------------------------------------------------
+   IRASCO design tokens.
+
+   The palette keeps the logo's blue and yellow and grounds them in steel:
+   Graphite carries the hero, 3D and closing sections; Sheet carries reading
+   and photos. Signal Yellow is for calls to action and safety details only.
+   -------------------------------------------------------------------------- */
+@theme {
+  --color-graphite: #101418;
+  --color-graphite-deep: #0b0e11;
+  --color-steel: #c5cbd0;
+  --color-steel-dark: #8c96a0;
+  --color-sheet: #edf0f2;
+  --color-panel: #f8f9fa;
+  --color-ink: #12171c;
+  --color-muted: #56616b;
+  --color-ir-blue: #1f5fb4;
+  --color-ir-blue-light: #74a6f0;
+  --color-navy: #16224a;
+  --color-signal: #f4c21f;
+
+  --ease-air: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* The scroll film only runs where scripts run and motion is welcome. Older
+   browsers that do not know `scripting` skip these rules and get the stills.
+   Mirrors FILM_QUERY in app/components/story/chapters.ts. */
+@custom-variant film (@media (scripting: enabled) and (prefers-reduced-motion: no-preference));
+
+@theme inline {
+  --font-display: var(--font-archivo), var(--font-plex-deva), "Arial Narrow", Arial, sans-serif;
+  --font-sans: var(--font-plex), var(--font-plex-deva), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Surfaces. Each section declares one; components read the local tokens.
+   They live in the components layer so utilities (e.g. bg-transparent) still win. */
+@layer components {
+  .surface-light {
+    --bg: var(--color-sheet);
+    --fg: var(--color-ink);
+    --fg-muted: var(--color-muted);
+    --line: #c9d0d6;
+    --accent: var(--color-ir-blue);
+  }
+  .surface-panel {
+    --bg: var(--color-panel);
+    --fg: var(--color-ink);
+    --fg-muted: var(--color-muted);
+    --line: #d3d9de;
+    --accent: var(--color-ir-blue);
+  }
+  .surface-dark {
+    --bg: var(--color-graphite);
+    --fg: #e4e9ed;
+    --fg-muted: #9aa5af;
+    --line: #2a333b;
+    --accent: var(--color-ir-blue-light);
+  }
+  .surface-deep {
+    --bg: var(--color-graphite-deep);
+    --fg: #e4e9ed;
+    --fg-muted: #8f9aa4;
+    --line: #222a31;
+    --accent: var(--color-ir-blue-light);
+  }
+  .surface-light,
+  .surface-panel,
+  .surface-dark,
+  .surface-deep {
+    background-color: var(--bg);
+    color: var(--fg);
+  }
+}
+
+@layer base {
+  :root {
+    --bg: var(--color-graphite-deep);
+    --fg: #e4e9ed;
+    --fg-muted: #8f9aa4;
+    --line: #222a31;
+    --accent: var(--color-ir-blue-light);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    background: var(--color-graphite-deep);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: var(--color-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+  /* Hindi reads better with a touch more leading. */
+  :lang(hi) body {
+    line-height: 1.7;
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 82rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2.5rem);
+  }
+
+  /* Monospace label: eyebrows, spec tags, units. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  :lang(hi) .label {
+    letter-spacing: 0.02em;
+    font-size: 0.8rem;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    line-height: 0.98;
+  }
+
+  /* Yellow-and-black safety tape. Used once per page, on the main call to action. */
+  .tape {
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--color-signal) 0 10px,
+      var(--color-ink) 10px 20px
+    );
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.8rem 1.4rem;
+    font-weight: 600;
+    line-height: 1.1;
+    transition:
+      background-color 200ms var(--ease-air),
+      color 200ms var(--ease-air),
+      transform 200ms var(--ease-air);
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-signal {
+    background: var(--color-signal);
+    color: var(--color-ink);
+  }
+  .btn-signal:hover {
+    background: #ffd34a;
+  }
+  .btn-line {
+    border: 1px solid currentColor;
+    color: var(--fg);
+  }
+  .btn-line:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+}
+
+/* Lenis smooth scroll. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Services run (desktop): each card hangs from the trunk duct by a short
+   branch with a flange where it meets the card. */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) and (min-width: 64rem) {
+  .service-outlet::before {
+    content: "";
+    position: absolute;
+    left: 2rem;
+    bottom: 100%;
+    width: 1.75rem;
+    height: calc(6rem - 2.25rem);
+    border-inline: 1.5px solid var(--fg);
+    background: var(--bg);
+  }
+  .service-outlet::after {
+    content: "";
+    position: absolute;
+    left: 1.6rem;
+    top: -2px;
+    width: 2.55rem;
+    height: 3px;
+    background: var(--fg);
+  }
+}
+
+@keyframes duct-air {
+  from {
+    transform: translateX(-48px);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes cue {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(200%);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
