@@ -1,24 +1,35 @@
-# Logs
-logs
+# dependencies
+node_modules
+.pnp
+.pnp.*
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# production
+/build
+
+# env files (commit .env.example only)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
+# editor
 .vscode/*
 !.vscode/extensions.json
 .idea
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+
+# blender render output (re-create with 3d/story/render.py)
+/3d/renders/
+*.blend1
+__pycache__/
